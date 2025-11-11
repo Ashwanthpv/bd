@@ -3,400 +3,414 @@
 <head>      
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Home - BlueDiamond</title>
   <style>
+    /* Animated background */
     body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
       background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
       background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
+      animation: gradient 12s ease infinite;
       color: white;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      overflow-x: hidden;
+      position: relative;
     }
 
     @keyframes gradient {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* ---- HEADER ---- */
+    /* Navigation Bar */
     header {
-      background: #111;
-      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      padding: 10px 30px;
+      box-sizing: border-box;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #23d5ab;
+    }
+
+    /* Logo Section */
+    .logo {
+      width: 120px;
+      height: auto;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    /* Slider container */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: 80px; /* offset for header */
+    }
+
+    /* Individual slide */
+    .slide {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* ✅ Doubled logo image size */
-    .logo img {
-      height: 90px;
-      width: auto;
-      border-radius: 12px;
-    }
-
-    /* ✅ Larger text for logo name */
-    .logo h2 {
-      color: #00bcd4;
-      margin: 0;
-      font-size: 36px;
-      letter-spacing: 0.6px;
-      font-weight: 600;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      gap: 20px;
-      transition: all 0.3s ease;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #00bcd4;
-    }
-
-    nav ul li a.active {
-      color: #00bcd4;
-      border-bottom: 2px solid #00bcd4;
-      padding-bottom: 4px;
-    }
-
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
-      border-radius: 3px;
-    }
-
-    /* ---- CONTENT ---- */
-    .content {
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .content h1 {
-      font-size: 2.2rem;
-    }
-
-    .content p {
-      font-size: 1rem;
-      margin-bottom: 40px;
-    }
-
-    /* ---- SLIDER ---- */
-    .slider-container {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-      padding: 20px;
-    }
-
-    .slider-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      flex-wrap: wrap;
-    }
-
-    .slider {
-      width: 65%;
-      min-width: 280px;
-    }
-
-    .slider img {
       width: 100%;
-      display: none;
-      border-radius: 10px;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      padding: 40px;
+      box-sizing: border-box;
     }
 
-    .slider img.active {
-      display: block;
+    .slide.active {
+      opacity: 1;
+      position: relative;
     }
 
-    .slider-text {
-      width: 35%;
-      min-width: 250px;
-      padding: 20px;
-      text-align: left;
+    /* Image section (40%) */
+    .slide img {
+      width: 40%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    .slider-text h2 {
-      color: #fff;
-      margin-bottom: 10px;
-      font-size: 1.4rem;
+    /* Text section (60%) */
+    .text {
+      width: 55%;
     }
 
-    .slider-text p {
-      color: #e0e0e0;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-
-    /* ---- FOOTER ---- */
-    footer {
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #b91ad8);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 40px;
-      border-top: none;
-    }
-
-    footer img {
-      width: 120px;
-      border-radius: 10px;
+    .text h1 {
+      font-size: 2.5rem;
       margin-bottom: 15px;
-      border: 2px solid white;
     }
 
-    footer p {
-      margin: 8px 0;
-      font-size: 14px;
-      color: #f1f1f1;
+    .text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    footer h3 {
-      color: white;
+    /* Vision & Mission Section */
+    .bottom-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 60px 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .card {
+      width: 45%;
+      margin: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
       margin-bottom: 10px;
-    }
-
-    footer a {
       color: #fff;
     }
 
-    .footer-buttons {
-      margin-top: 15px;
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #f0f0f0;
     }
 
-    .footer-buttons a {
-      text-decoration: none;
-      color: #0077cc;
-      background: white;
-      padding: 10px 18px;
-      border-radius: 8px;
-      margin: 5px;
+    /* Footer Section */
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 0;
+      color: #fff;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-logo img {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .footer-info {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .social-icons {
+      margin-bottom: 10px;
+    }
+
+    .social-icons a {
+      margin-left: 10px;
       display: inline-block;
-      font-weight: 500;
-      transition: 0.3s;
     }
 
-    .footer-buttons a:hover {
-      background: #e0e0e0;
-      transform: scale(1.05);
+    .social-icons img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
     }
 
-    /* ---- RESPONSIVE DESIGN ---- */
-    @media (max-width: 992px) {
-      nav ul {
-        gap: 15px;
+    .social-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    .contact-info {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .slide img {
+        width: 45%;
       }
-      .slider-text {
-        padding: 15px;
+      .text {
+        width: 50%;
       }
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav ul {
-        display: none;
+      header {
         flex-direction: column;
-        width: 100%;
-        background: #111;
         text-align: center;
-        padding: 10px 0;
+        padding: 10px 15px;
       }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .slider-section {
+      .slide {
         flex-direction: column;
+        text-align: center;
+        padding: 20px;
       }
-
-      .slider {
+      .slide img {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+      .text {
         width: 100%;
       }
-
-      .slider-text {
-        width: 100%;
+      .text h1 {
+        font-size: 2rem;
+      }
+      .text p {
+        font-size: 1rem;
+      }
+      .card {
+        width: 90%;
+      }
+      .logo {
+        width: 100px;
+      }
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
       }
-
-      .content h1 {
-        font-size: 1.8rem;
+      .footer-info {
+        align-items: center;
+        margin-top: 20px;
       }
-
-      /* ✅ Reduce logo size slightly for mobile */
-      .logo img {
-        height: 70px;
+      .contact-info {
+        text-align: center;
       }
-
-      .logo h2 {
-        font-size: 28px;
+      .footer-logo img {
+        width: 300px;
+        height: 180px;
       }
     }
 
     @media (max-width: 480px) {
-      .logo h2 {
-        font-size: 22px;
+      .slide img {
+        width: 100%;
       }
-      .footer-buttons a {
-        padding: 8px 12px;
-        font-size: 14px;
+      .text h1 {
+        font-size: 1.5rem;
+      }
+      .text p {
+        font-size: 0.9rem;
+      }
+      .card img {
+        height: 180px;
+      }
+      .card h2 {
+        font-size: 1.4rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+      header nav a {
+        margin: 5px 10px;
+        font-size: 0.9rem;
+      }
+      .footer-logo img {
+        width: 300px;
+        height: 150px;
+      }
+      .social-icons img {
+        width: 30px;
+        height: 30px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header Navigation -->
   <header>
     <div class="logo">
-      <img src="asset/c3.png" alt="Logo">
-      <h2>BlueDiamond</h2>
+      <!-- <img src="asset/c3.png" alt="BlueDiamond Logo" /> -->
     </div>
-
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
     <nav>
-      <ul id="nav-list">
-        <li><a href="home.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="#">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="content">
-    <h1>Welcome to BlueDiamond Water Solutions</h1>
-    <p>Explore our advanced ETP waste management solutions.</p>
-
-    <div class="slider-container">
-
-      <!-- Slider 1 -->
-      <div class="slider-section">
-        <div class="slider">
-          <img src="asset/eco1.png" class="active" />
-          <img src="asset/eco2.png" />
-          <img src="asset/eco3.png" />
-        </div>
-        <div class="slider-text">
-          <h2>Eco-Friendly Treatment</h2>
-          <p>Our cutting-edge ETP solutions ensure that industrial waste is treated efficiently with minimal environmental impact.</p>
-        </div>
+  <!-- Slider Section -->
+  <div class="slider">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img src="asset/slider.png" alt="Eco Plant" />
+      <div class="text">
+        <h1>WELCOME TO BlueDiamond Water Solutions</h1>
+        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
       </div>
-
-      <!-- Slider 2 -->
-      <div class="slider-section">
-        <div class="slider">
-          <img src="asset/eco1.png" class="active" />
-          <img src="asset/eco4.png" />
-          <img src="asset/eco2.png" />
-        </div>
-        <div class="slider-text">
-          <h2>Advanced Filtration</h2>
-          <p>We use multi-stage purification technologies for maximum water recovery and waste reduction.</p>
-        </div>
-      </div>
-
-      <!-- Slider 3 -->
-      <div class="slider-section">
-        <div class="slider">
-          <img src="asset/eco2.png" class="active" />
-          <img src="asset/eco4.png" />
-          <img src="asset/eco1.png" />
-        </div>
-        <div class="slider-text">
-          <h2>Smart Automation</h2>
-          <p>Our systems are integrated with IoT sensors for real-time monitoring and process optimization.</p>
-        </div>
-      </div>
-
     </div>
-  </section>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="asset/gold.png" alt="Water Treatment" />
+      <div class="text">
+        <h1>  WELCOME TO BlueDiamond Water Solutions</h1>
+        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="asset/silver.png" alt="Recycling" />
+      <div class="text">
+        <h1>WELCOME TO BlueDiamond Water Solutions</h1>
+        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vision & Mission Section -->
+  <div class="bottom-section">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Vision" />
+      <h2>Our Vision</h2>
+      <p>To provide world class solutions for safe, clean and hygienic drinking water to the society and ensure that a large section of the society has access to pure drinking water.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Mission" />
+      <h2>Our Mission</h2>
+      <p>To harness our expertise through our highly qualified and experienced manpower and state-of-the-art equipment and to constantly innovate for providing world-class solutions in our quest to provide safe, clean and pure drinking water.</p>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer>
-    <img src="asset/c3.png" alt="Company Logo">
-    <h3>BlueDiamond Water Solutions</h3>
-    <p><a href="https://maps.google.com/?q=BlueDiamond+ETP+Solutions" target="_blank">📍 Main Road, Puthan Theru, Malappuram</a></p>
-    <p>Contact us through your favorite platform:</p>
+    <div class="footer-container">
+      
+      <!-- Left: Square Logo/Image -->
+      <div class="footer-logo">
+        <a href="https://www.google.com/maps/place/Blue+Mount+Traders/@11.2817809,75.7703722,17z/data=!4m14!1m7!3m6!1s0x3ba6599bcbe7e6dd:0x3ecb733d17e21541!2sBlue+Mount+Traders!8m2!3d11.2817809!4d75.7703722!16s%2Fg%2F11p102tf1p!3m5!1s0x3ba6599bcbe7e6dd:0x3ecb733d17e21541!8m2!3d11.2817809!4d75.7703722!16s%2Fg%2F11p102tf1p?entry=ttu&g_ep=EgoyMDI1MTEwNS4wIKXMDSoASAFQAw%3D%3D">
+  <img src="asset/footer.png" alt="BlueDiamond Logo">
+</a>
 
-    <div class="footer-buttons">
-      <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
-      <a href="https://instagram.com/bluediamond" target="_blank">📸 Instagram</a>
-      <a href="https://t.me/bluediamond" target="_blank">📨 Telegram</a>
-      <a href="mailto:info@bluediamond.com" target="_blank">✉️ Email Us</a>
+      </div>
+
+      <!-- Right: Social Icons + Contact Info -->
+      <div class="footer-info">
+        <div class="social-icons">
+          <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram"></a>
+          <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384007.png" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Facebook"></a>
+        </div>
+        <div class="contact-info">
+          <strong>BlueDiamond Waste Solutions Pvt. Ltd.</strong><br>
+          123 GreenTech Park, Eco City, Chennai, India<br>
+          Phone: +91 99999 99999 | Email: info@bluediamond.com
+        </div>
+      </div>
     </div>
 
-    <p style="margin-top:20px; font-size:13px;">
-      <a href="https://www.navigatorassist.in/">© navigatorassist All rights reserved</a>.
-    </p>
+    <!-- Bottom copyright -->
+    <p style="text-align: center; margin-top: 20px; color: #fff; font-size: 0.9rem;">©<a href="https://www.navigatorassist.in/">navigatorassist All rights reserved.</a></p>
   </footer>
 
   <script>
-    // Mobile Menu Toggle
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('nav-list').classList.toggle('show');
-    });
-
-    // Auto Slider for all sections
-    document.querySelectorAll('.slider').forEach(slider => {
-      let index = 0;
-      const imgs = slider.querySelectorAll('img');
-      setInterval(() => {
-        imgs[index].classList.remove('active');
-        index = (index + 1) % imgs.length;
-        imgs[index].classList.add('active');
-      }, 3000);
-    });
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+    function showNextSlide() {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }
+    setInterval(showNextSlide, 4000);
   </script>
 </body>
 </html>

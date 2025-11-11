@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - BlueDiamond</title>
+  <style>
+    /* ---------- Global Styles ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      color: white;
+      min-height: 100vh;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo-section img {
+      width: 160px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid white;
+      object-fit: cover;
+    }
+
+    .logo-section h1 {
+      color: #00e5ff;
+      font-size: 1.9rem;
+      margin: 0;
+      font-weight: 600;
+      text-shadow: 0 0 5px rgba(0, 229, 255, 0.6);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00e5ff;
+      border-bottom: 2px solid #00e5ff;
+      padding-bottom: 3px;
+    }
+
+    /* ---------- Main Content ---------- */
+    .content {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .content p {
+      color: #222;
+      line-height: 1.8;
+      text-align: justify;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-image {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .about-image img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ---------- Clients Section ---------- */
+    .clients-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      margin-top: 60px;
+    }
+
+    .clients-section h2 {
+      color: #0077cc;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .clients-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .clients-logos img {
+      width: 140px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #f8f8f8;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .clients-logos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: linear-gradient(135deg, #0077cc, #00bcd4);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    footer img {
+      width: 240px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 3px solid white;
+      object-fit: cover;
+    }
+
+    footer h3 {
+      margin: 8px 0;
+      font-size: 1.3rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-buttons a {
+      text-decoration: none;
+      color: #0077cc;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin: 5px;
+      display: inline-block;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .footer-buttons a:hover {
+      background: #e0e0e0;
+      transform: scale(1.05);
+    }
+
+    /* ---------- Responsive Breakpoints ---------- */
+
+    /* Tablets */
+    @media (max-width: 992px) {
+      .logo-section img {
+        width: 140px;
+      }
+
+      .logo-section h1 {
+        font-size: 1.6rem;
+      }
+
+      .content {
+        padding: 40px 15px;
+      }
+
+      .content h2 {
+        font-size: 1.9rem;
+      }
+
+      .clients-logos img {
+        width: 120px;
+        height: 70px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .logo-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .content h2 {
+        font-size: 1.7rem;
+      }
+
+      .content p {
+        font-size: 0.95rem;
+      }
+
+      .clients-logos img {
+        width: 100px;
+        height: 60px;
+      }
+
+      footer img {
+        width: 200px;
+      }
+    }
+
+    /* Small Phones */
+    @media (max-width: 480px) {
+      .logo-section h1 {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+
+      .content p {
+        padding: 15px;
+        font-size: 0.9rem;
+      }
+
+      .clients-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .footer-buttons a {
+        display: block;
+        margin: 8px auto;
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-section">
+      <img src="asset/c3.png" alt="BlueDiamond Logo">
+      <h1>BlueDiamond Water Solutions</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>About Us</h2>
+    <p>
+      <strong>BlueDiamond</strong> is a leading environmental solutions company
+      dedicated to sustainable waste management and advanced Effluent Treatment
+      Plant (ETP) systems. With a strong commitment to protecting our planet, we
+      specialize in designing, developing, and operating eco-friendly treatment
+      facilities that ensure industrial and municipal waste is processed
+      responsibly. Our innovative technologies, combined with expert engineering
+      and environmental stewardship, help clients achieve compliance, reduce
+      pollution, and promote a cleaner, greener future. At BlueDiamond, we
+      believe every drop counts — transforming waste into a resource for a
+      sustainable tomorrow.
+    </p>
+
+    <div class="about-image">
+      <img src="asset/c3.png" alt="BlueDiamond ETP Facility">
+    </div>
+  </section>
+
+  <section class="clients-section">
+    <h2>Our Clients</h2>
+    <div class="clients-logos">
+      <img src="asset/c1.png" alt="Client 1">
+      <img src="asset/c2.png" alt="Client 2">
+      <img src="asset/c3.png" alt="Client 3">
+      <img src="asset/c4.png" alt="Client 4">
+      <img src="https://picsum.photos/200/80?random=15" alt="Client 5">
+    </div>
+  </section>
+
+  <footer>
+    <img src="asset/c3.png" alt="Company Logo">
+    <h3>BlueDiamond ETP Solutions</h3>
+    <p><a href="https://maps.google.com/?q=BlueDiamond+ETP+Solutions" target="_blank">📍 Main Road, Puthan Theru, Malappuram</a></p>
+    <p>Contact us through your favorite platform:</p>
+
+    <div class="footer-buttons">
+      <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
+      <a href="https://instagram.com/bluediamond" target="_blank">📸 Instagram</a>
+      <a href="https://t.me/bluediamond" target="_blank">📨 Telegram</a>
+      <a href="mailto:info@bluediamond.com" target="_blank">✉️ Email Us</a>
+    </div>
+
+    <p style="margin-top:20px; font-size:13px;">
+      <a href="https://www.navigatorassist.in/">© navigatorassist All rights reserved.</a>
+    </p>
+  </footer>
+</body>
+</html>

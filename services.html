@@ -55,6 +55,29 @@
       transform: scale(1.05);
     }
 
+    /* NEW 3-LINE MOBILE MENU */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle div {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hide hamburger on desktop */
+    @media (min-width: 992px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -77,20 +100,7 @@
       padding-bottom: 3px;
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 6px;
-    }
-
-    .menu-toggle div {
-      width: 8px;
-      height: 8px;
-      background-color: white;
-      border-radius: 50%;
-    }
-
+    /* Mobile hidden menu */
     nav ul.mobile-hidden {
       display: none;
       flex-direction: column;
@@ -108,10 +118,6 @@
 
     /* Desktop Navbar */
     @media (min-width: 992px) {
-      .menu-toggle {
-        display: none;
-      }
-
       nav ul {
         display: flex !important;
       }
@@ -250,8 +256,11 @@
       <img src="asset/c3.png" alt="BlueDiamond Logo">
     </div>
 
+    <!-- NEW MOBILE 3-LINE MENU -->
     <div class="menu-toggle" id="menuToggle">
-      <div></div><div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
 
     <nav>
@@ -293,7 +302,7 @@
 
       <div class="service-card"><img src="asset/airbowl.png"><h3>Air Blowers</h3><p>Energy-efficient blowers.</p></div>
 
-      <div class="service-card"><img src="asset/doosing pump.png"><h3>Dosing Pumps</h3><p>Accurate chemical dosing.</p></div>
+      <div class="service-card"><img src="asset/indu.png"><h3>Dosing Pumps</h3><p>Accurate chemical dosing.</p></div>
 
     </div>
   </section>

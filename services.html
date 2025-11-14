@@ -29,6 +29,9 @@
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 10px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo-section {
@@ -37,28 +40,29 @@
       gap: 15px;
     }
 
+    /* Default logo style (mobile) */
     .logo-section img {
       width: 160px;
       height: 80px;
       border-radius: 10px;
       border: 2px solid white;
       object-fit: cover;
-      object-position: center;
       transition: transform 0.3s ease;
+    }
+
+    /* Double size for laptops/desktops */
+    @media (min-width: 992px) {
+      .logo-section img {
+        width: 320px;
+        height: 160px;
+      }
     }
 
     .logo-section img:hover {
       transform: scale(1.05);
     }
 
-    .logo-section h1 {
-      color: #00e5ff;
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: 600;
-      text-shadow: 0 0 5px rgba(0, 229, 255, 0.6);
-    }
-
+    /* ---------- Navigation ---------- */
     nav ul {
       list-style: none;
       display: flex;
@@ -79,6 +83,57 @@
       color: #00e5ff;
       border-bottom: 2px solid #00e5ff;
       padding-bottom: 3px;
+    }
+
+    /* ---------- Mobile Menu ---------- */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .menu-toggle div {
+      width: 8px;
+      height: 8px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    nav ul.mobile-hidden {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.95);
+      margin-top: 10px;
+      border-radius: 10px;
+      padding: 15px 0;
+    }
+
+    nav ul.mobile-visible {
+      display: flex;
+    }
+
+    /* ---------- Desktop Navbar ---------- */
+    @media (min-width: 992px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      nav ul {
+        display: flex !important;
+      }
+
+      nav ul.mobile-hidden,
+      nav ul.mobile-visible {
+        display: flex !important;
+        flex-direction: row;
+        background: transparent;
+        margin-top: 0;
+        border-radius: 0;
+        padding: 0;
+      }
     }
 
     /* ---------- Services Section ---------- */
@@ -102,7 +157,6 @@
       margin: 0 auto 40px;
     }
 
-    /* Slider wrapper (visible area) */
     .slider-container {
       overflow: hidden;
       position: relative;
@@ -111,7 +165,6 @@
       padding: 10px 0;
     }
 
-    /* Animated track (we will duplicate cards inside it) */
     .service-track {
       display: flex;
       gap: 30px;
@@ -170,7 +223,6 @@
       border-radius: 10px;
       border: 2px solid white;
       object-fit: cover;
-      object-position: center;
       margin-bottom: 10px;
       transition: transform 0.3s ease;
     }
@@ -188,7 +240,6 @@
       text-decoration: underline;
     }
 
-    /* Pause overlay to show "hover to pause" hint (optional) */
     .slider-container .pause-hint {
       position: absolute;
       right: 12px;
@@ -202,23 +253,70 @@
       opacity: 0.85;
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 768px) {
-      .service-card { width: 260px; }
-      .logo-section img { width: 120px; height: 60px; }
+    /* ---------- Responsive Adjustments ---------- */
+    @media (max-width: 992px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      nav ul.mobile-visible {
+        display: flex;
+      }
+
+      .service-card {
+        width: 260px;
+      }
+
+      .logo-section img {
+        width: 160px;
+        height: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .service-card {
+        width: 200px;
+        padding: 15px;
+      }
+
+      .service-card img {
+        height: 140px;
+      }
+
+      .services-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .services-section p {
+        font-size: 0.85rem;
+      }
+
+      footer {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- ---------- Header ---------- -->
   <header>
     <div class="logo-section">
       <img src="asset/c3.png" alt="BlueDiamond Logo">
-      <h1></h1>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
 
     <nav>
-      <ul>
+      <ul id="navLinks" class="mobile-hidden">
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html" class="active">Services</a></li>
@@ -234,11 +332,10 @@
 
     <div class="slider-container" id="sliderContainer">
       <div class="service-track" id="serviceTrack">
-        <!-- Original set of cards (you can add/remove cards here) -->
         <div class="service-card"><img src="asset/eco1.png" alt="ETP Installation"><h3>ETP Plant Installation</h3><p>Designing and installing Effluent Treatment Plants tailored to industrial needs.</p></div>
-        <div class="service-card"><img src="asset/ser1 (4).png" alt="Waste Recycling"><h3>industrial ro filter</h3><p>Eco-friendly waste collection and recycling ensuring zero landfill.</p></div>
-        <div class="service-card"><img src="asset/ser1 (4).png" alt="Plant Maintenance"><h3>Domesticro filter</h3><p>Regular maintenance and optimization for long-term sustainability.</p></div>
-        <div class="service-card"><img src="asset/bk.png" alt="Water Quality"><h3>Pressure sand activated carbon filter</h3><p>Comprehensive testing to ensure compliance with environmental standards.</p></div>
+        <div class="service-card"><img src="asset/ser1 (4).png" alt="Waste Recycling"><h3>Industrial RO Filter</h3><p>Eco-friendly waste collection and recycling ensuring zero landfill.</p></div>
+        <div class="service-card"><img src="asset/ser1 (4).png" alt="Plant Maintenance"><h3>Domestic RO Filter</h3><p>Regular maintenance and optimization for long-term sustainability.</p></div>
+        <div class="service-card"><img src="asset/bk.png" alt="Water Quality"><h3>Pressure Sand Activated Carbon Filter</h3><p>Comprehensive testing to ensure compliance with environmental standards.</p></div>
         <div class="service-card"><img src="asset/ser1 (6).png" alt="STP"><h3>Sewage Treatment Plants</h3><p>Installation and maintenance of all kinds of sewage treatment systems.</p></div>
         <div class="service-card"><img src="asset/indu.png" alt="RO"><h3>Industrial/Domestic RO Systems</h3><p>Reliable and efficient RO systems for pure water solutions.</p></div>
         <div class="service-card"><img src="asset/ak.png" alt="Filters"><h3>Pressure Sand & Activated Carbon Filters</h3><p>Advanced filters for water purification and clarity.</p></div>
@@ -248,7 +345,6 @@
         <div class="service-card"><img src="asset/airbowl.png" alt="Blowers"><h3>Air Blowers</h3><p>Energy-efficient air blowers for aeration and mixing systems.</p></div>
         <div class="service-card"><img src="asset/doosing pump.png" alt="Dosing"><h3>Dosing Pumps</h3><p>High-quality dosing pumps for accurate chemical dosing.</p></div>
       </div>
-
       <div class="pause-hint">Hover to pause</div>
     </div>
   </section>
@@ -256,25 +352,33 @@
   <!-- ---------- Footer ---------- -->
   <footer>
     <img src="asset/c3.png" alt="Company Logo">
-    <h3>BlueDiamond ETP Solutions</h3>
-    <p><a href="https://maps.google.com/?q=BlueDiamond+ETP+Solutions" target="_blank">📍 main road, puthan theru, malappuram</a></p>
+    <h3>BlueDiamond Water Solutions</h3>
+    <p><a href="https://maps.google.com/?q=BlueDiamond+ETP+Solutions" target="_blank">📍 Main Road, Puthan Theru, Malappuram</a></p>
     <p style="margin-top:10px; font-size:13px;">
       <a href="https://www.navigatorassist.in/">© navigatorassist All rights reserved.</a>
     </p>
   </footer>
 
   <script>
+    // --- Menu Toggle ---
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-visible');
+      navLinks.classList.toggle('mobile-hidden');
+    });
+
+    // --- Slider Animation ---
     (function() {
       const track = document.getElementById('serviceTrack');
       const container = document.getElementById('sliderContainer');
-      let speed = 0.6; // pixels per frame (adjust for faster/slower)
+      let speed = 0.6;
       let pos = 0;
       let trackWidth;
       let isPaused = false;
 
-      // duplicate track content to allow seamless infinite scroll
       function duplicateContent() {
-        // clone nodes
         const children = Array.from(track.children);
         children.forEach(node => {
           const clone = node.cloneNode(true);
@@ -283,68 +387,37 @@
       }
 
       function calculateWidths() {
-        // width of one full set = current track.scrollWidth / 2 (because we duplicated)
         trackWidth = track.scrollWidth / 2;
       }
 
       function frame() {
         if (!isPaused) {
           pos += speed;
-          // when pos exceeds width of one set, wrap back
-          if (pos >= trackWidth) {
-            pos = 0;
-          }
+          if (pos >= trackWidth) pos = 0;
           track.style.transform = `translateX(${-pos}px)`;
         }
         requestAnimationFrame(frame);
       }
 
-      // Pause on hover
       container.addEventListener('mouseenter', () => isPaused = true);
       container.addEventListener('mouseleave', () => isPaused = false);
 
-      // init
       duplicateContent();
 
-      // recalc widths after images load (images may change widths)
       const images = track.querySelectorAll('img');
       let imagesToLoad = images.length;
-      if (imagesToLoad === 0) {
-        calculateWidths();
-        requestAnimationFrame(frame);
-      } else {
-        images.forEach(img => {
-          if (img.complete) {
-            imagesToLoad--;
-            if (imagesToLoad === 0) {
-              calculateWidths();
-              requestAnimationFrame(frame);
-            }
-          } else {
-            img.addEventListener('load', () => {
-              imagesToLoad--;
-              if (imagesToLoad === 0) {
-                calculateWidths();
-                requestAnimationFrame(frame);
-              }
-            });
-            // handle error as well
-            img.addEventListener('error', () => {
-              imagesToLoad--;
-              if (imagesToLoad === 0) {
-                calculateWidths();
-                requestAnimationFrame(frame);
-              }
-            });
-          }
-        });
-      }
+      const done = () => {
+        imagesToLoad--;
+        if (imagesToLoad === 0) {
+          calculateWidths();
+          requestAnimationFrame(frame);
+        }
+      };
 
-      // Recalculate on resize
-      window.addEventListener('resize', () => {
-        calculateWidths();
-      });
+      if (imagesToLoad === 0) done();
+      else images.forEach(img => img.complete ? done() : img.addEventListener('load', done));
 
+      window.addEventListener('resize', calculateWidths);
     })();
   </script>
 </body>

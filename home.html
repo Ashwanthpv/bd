@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>      
+<head>        
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - BlueDiamond</title>
@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, white, #e9ebeb, red);
       background-size: 400% 400%;
       animation: gradient 12s ease infinite;
       color: white;
@@ -54,26 +54,35 @@
 
     /* Logo Section */
     .logo {
-      width: 120px;
-      height: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .logo img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
+    /* Rectangle logo only visible on laptops/desktops */
+    .logo img.desktop-logo {
+      display: block;
+      width: 360px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
-    /* Slider container */
+    /* Hide logo on smaller screens */
+    @media (max-width: 768px) {
+      .logo img.desktop-logo {
+        display: none;
+      }
+    }
+
     .slider {
       position: relative;
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      margin-top: 80px; /* offset for header */
+      margin-top: 80px;
     }
 
-    /* Individual slide */
     .slide {
       display: flex;
       align-items: center;
@@ -92,7 +101,6 @@
       position: relative;
     }
 
-    /* Image section (40%) */
     .slide img {
       width: 40%;
       aspect-ratio: 1 / 1;
@@ -101,7 +109,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    /* Text section (60%) */
     .text {
       width: 55%;
     }
@@ -112,11 +119,11 @@
     }
 
     .text p {
+      color: #2c2929;
       font-size: 1.1rem;
       line-height: 1.6;
     }
 
-    /* Vision & Mission Section */
     .bottom-section {
       display: flex;
       justify-content: space-around;
@@ -163,7 +170,6 @@
       color: #f0f0f0;
     }
 
-    /* Footer Section */
     footer {
       background: rgba(0, 0, 0, 0.6);
       padding: 20px 0;
@@ -219,94 +225,54 @@
       line-height: 1.5;
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .slide img {
-        width: 45%;
-      }
-      .text {
-        width: 50%;
-      }
-    }
-
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         text-align: center;
         padding: 10px 15px;
       }
+
+      .logo {
+        flex-direction: column;
+      }
+
       .slide {
         flex-direction: column;
         text-align: center;
         padding: 20px;
       }
+
       .slide img {
         width: 80%;
         margin-bottom: 20px;
       }
+
       .text {
         width: 100%;
       }
-      .text h1 {
-        font-size: 2rem;
-      }
-      .text p {
-        font-size: 1rem;
-      }
+
       .card {
         width: 90%;
       }
-      .logo {
-        width: 100px;
-      }
+
       .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
+
       .footer-info {
         align-items: center;
         margin-top: 20px;
       }
+
       .contact-info {
         text-align: center;
       }
-      .footer-logo img {
-        width: 300px;
-        height: 180px;
-      }
-    }
 
-    @media (max-width: 480px) {
-      .slide img {
-        width: 100%;
-      }
-      .text h1 {
-        font-size: 1.5rem;
-      }
-      .text p {
-        font-size: 0.9rem;
-      }
-      .card img {
-        height: 180px;
-      }
-      .card h2 {
-        font-size: 1.4rem;
-      }
-      .card p {
-        font-size: 0.9rem;
-      }
-      header nav a {
-        margin: 5px 10px;
-        font-size: 0.9rem;
-      }
       .footer-logo img {
         width: 300px;
-        height: 150px;
-      }
-      .social-icons img {
-        width: 30px;
-        height: 30px;
+        height: 180px;
       }
     }
   </style>
@@ -316,7 +282,7 @@
   <!-- Header Navigation -->
   <header>
     <div class="logo">
-      <!-- <img src="asset/c3.png" alt="BlueDiamond Logo" /> -->
+      <img src="asset/c3.png" alt="BlueDiamond Logo" class="desktop-logo" />
     </div>
     <nav>
       <a href="#">Home</a>
@@ -328,30 +294,36 @@
 
   <!-- Slider Section -->
   <div class="slider">
-    <!-- Slide 1 -->
     <div class="slide active">
       <img src="asset/slider.png" alt="Eco Plant" />
       <div class="text">
         <h1>WELCOME TO BlueDiamond Water Solutions</h1>
-        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
+        <p>Blue Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
+</p>
+        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
+        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects...</p> -->
       </div>
     </div>
 
-    <!-- Slide 2 -->
     <div class="slide">
       <img src="asset/gold.png" alt="Water Treatment" />
       <div class="text">
-        <h1>  WELCOME TO BlueDiamond Water Solutions</h1>
-        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
+        <h1>WELCOME TO BlueDiamond Water Solutions</h1>
+        <p>**Blue Diamond Water Solutions**, founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
+</p>
+        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
+        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment...</p> -->
       </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="slide">
       <img src="asset/silver.png" alt="Recycling" />
       <div class="text">
         <h1>WELCOME TO BlueDiamond Water Solutions</h1>
-        <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects. Set up in the year 2009, today Blue Diamond Water Solutions, is the most trusted name for water treatment systems. Our commitment to quality, contemporary design, innovation, quick turnaround time and competitive pricing coupled with a ‘passion to excel’ has made us the preferred choice of OEMs and Corporate clientele. It is our attitude to ‘deliver the best’ that has made us one of the fastest growing companies, professionally managed with highly experienced manpower, state-of-the-art technology for production of water treatment plant, water treatment chemicals and specialty chemicals. With the encouragement and success, we tasted, we are planning to extend our range of services and products.</p>
+        <p>**Blue Diamond Water Solutions**, founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
+</p>
+        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
+        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment...</p> -->
       </div>
     </div>
   </div>
@@ -361,29 +333,24 @@
     <div class="card">
       <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Vision" />
       <h2>Our Vision</h2>
-      <p>To provide world class solutions for safe, clean and hygienic drinking water to the society and ensure that a large section of the society has access to pure drinking water.</p>
+      <p>To provide world class solutions for safe, clean and hygienic drinking water to society...</p>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Mission" />
       <h2>Our Mission</h2>
-      <p>To harness our expertise through our highly qualified and experienced manpower and state-of-the-art equipment and to constantly innovate for providing world-class solutions in our quest to provide safe, clean and pure drinking water.</p>
+      <p>To harness our expertise and provide world-class solutions in our quest to deliver safe drinking water...</p>
     </div>
   </div>
 
   <!-- Footer Section -->
   <footer>
     <div class="footer-container">
-      
-      <!-- Left: Square Logo/Image -->
       <div class="footer-logo">
-        <a href="https://www.google.com/maps/place/Blue+Mount+Traders/@11.2817809,75.7703722,17z/data=!4m14!1m7!3m6!1s0x3ba6599bcbe7e6dd:0x3ecb733d17e21541!2sBlue+Mount+Traders!8m2!3d11.2817809!4d75.7703722!16s%2Fg%2F11p102tf1p!3m5!1s0x3ba6599bcbe7e6dd:0x3ecb733d17e21541!8m2!3d11.2817809!4d75.7703722!16s%2Fg%2F11p102tf1p?entry=ttu&g_ep=EgoyMDI1MTEwNS4wIKXMDSoASAFQAw%3D%3D">
-  <img src="asset/footer.png" alt="BlueDiamond Logo">
-</a>
-
+        <a href="https://www.google.com/maps/place/Blue+Mount+Traders/">
+          <img src="asset/footer.png" alt="BlueDiamond Logo">
+        </a>
       </div>
-
-      <!-- Right: Social Icons + Contact Info -->
       <div class="footer-info">
         <div class="social-icons">
           <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram"></a>
@@ -392,14 +359,14 @@
         </div>
         <div class="contact-info">
           <strong>BlueDiamond Water Solutions Pvt. Ltd.</strong><br>
-           Main Road, Puthan Theru, Malappuram<br>
+          Main Road, Puthan Theru, Malappuram<br>
           Phone: +91 904801578 | Email: info@bluediamond.com
         </div>
       </div>
     </div>
-
-    <!-- Bottom copyright -->
-    <p style="text-align: center; margin-top: 20px; color: #fff; font-size: 0.9rem;">©<a href="https://www.navigatorassist.in/">navigatorassist All rights reserved.</a></p>
+    <p style="text-align: center; margin-top: 20px; color: #fff; font-size: 0.9rem;">
+      © <a href="https://www.navigatorassist.in/" style="color:#23d5ab;">navigatorassist All rights reserved.</a>
+    </p>
   </footer>
 
   <script>
@@ -412,5 +379,6 @@
     }
     setInterval(showNextSlide, 4000);
   </script>
+
 </body>
 </html>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Services | BlueDiamond</title>
+
   <style>
     body {
       font-family: "Poppins", sans-serif;
@@ -21,7 +22,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ---------- Header ---------- */
+    /* Header */
     header {
       background: rgba(0, 0, 0, 0.85);
       display: flex;
@@ -34,13 +35,6 @@
       z-index: 1000;
     }
 
-    .logo-section {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    /* Default logo style (mobile) */
     .logo-section img {
       width: 160px;
       height: 80px;
@@ -50,7 +44,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Double size for laptops/desktops */
     @media (min-width: 992px) {
       .logo-section img {
         width: 320px;
@@ -62,7 +55,29 @@
       transform: scale(1.05);
     }
 
-    /* ---------- Navigation ---------- */
+    /* NEW 3-LINE MOBILE MENU */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle div {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hide hamburger on desktop */
+    @media (min-width: 992px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -85,21 +100,7 @@
       padding-bottom: 3px;
     }
 
-    /* ---------- Mobile Menu ---------- */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 6px;
-    }
-
-    .menu-toggle div {
-      width: 8px;
-      height: 8px;
-      background-color: white;
-      border-radius: 50%;
-    }
-
+    /* Mobile hidden menu */
     nav ul.mobile-hidden {
       display: none;
       flex-direction: column;
@@ -115,12 +116,8 @@
       display: flex;
     }
 
-    /* ---------- Desktop Navbar ---------- */
+    /* Desktop Navbar */
     @media (min-width: 992px) {
-      .menu-toggle {
-        display: none;
-      }
-
       nav ul {
         display: flex !important;
       }
@@ -136,7 +133,7 @@
       }
     }
 
-    /* ---------- Services Section ---------- */
+    /* Services Section */
     .services-section {
       padding: 60px 20px;
       text-align: center;
@@ -147,7 +144,6 @@
       font-size: 2.3rem;
       color: #004080;
       margin-bottom: 20px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .services-section p {
@@ -157,19 +153,25 @@
       margin: 0 auto 40px;
     }
 
-    .slider-container {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px 0;
+    /* GRID Service Cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .service-track {
-      display: flex;
-      gap: 30px;
-      align-items: stretch;
-      will-change: transform;
+    @media (min-width: 600px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .service-card {
@@ -177,10 +179,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 25px;
-      width: 300px;
-      flex-shrink: 0;
       transition: 0.3s;
-      box-sizing: border-box;
+      text-align: left;
     }
 
     .service-card:hover {
@@ -208,7 +208,7 @@
       line-height: 1.6;
     }
 
-    /* ---------- Footer ---------- */
+    /* Footer */
     footer {
       background: linear-gradient(135deg, #0077cc, #00bcd4);
       color: white;
@@ -231,84 +231,32 @@
       transform: scale(1.05);
     }
 
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .slider-container .pause-hint {
-      position: absolute;
-      right: 12px;
-      bottom: 12px;
-      background: rgba(0,0,0,0.45);
-      color: white;
-      font-size: 12px;
-      padding: 6px 8px;
-      border-radius: 6px;
-      pointer-events: none;
-      opacity: 0.85;
-    }
-
-    /* ---------- Responsive Adjustments ---------- */
-    @media (max-width: 992px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav ul {
-        display: none;
-      }
-
-      nav ul.mobile-visible {
-        display: flex;
-      }
-
-      .service-card {
-        width: 260px;
-      }
-
-      .logo-section img {
-        width: 160px;
-        height: 80px;
-      }
-    }
-
     @media (max-width: 480px) {
       .service-card {
-        width: 200px;
         padding: 15px;
       }
-
       .service-card img {
         height: 140px;
       }
-
       .services-section h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
-
       .services-section p {
-        font-size: 0.85rem;
-      }
-
-      footer {
-        padding: 30px 15px;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- ---------- Header ---------- -->
+
+  <!-- Header -->
   <header>
     <div class="logo-section">
-      <img src="asset/c3.png" alt="BlueDiamond Logo">
+      <img src="asset/21.jpg" alt="BlueDiamond Logo">
     </div>
 
+    <!-- NEW MOBILE 3-LINE MENU -->
     <div class="menu-toggle" id="menuToggle">
       <div></div>
       <div></div>
@@ -325,42 +273,49 @@
     </nav>
   </header>
 
-  <!-- ---------- Services Section ---------- -->
+  <!-- Services Section -->
   <section class="services-section">
     <h2>Our Services</h2>
-    <p>At <strong>BlueDiamond ETP Solutions</strong>, we provide comprehensive waste and water management services designed to protect the environment and promote sustainability.</p>
+    <p>At <strong>BlueDiamond ETP Solutions</strong>, we provide sustainable waste and water treatment services.</p>
 
-    <div class="slider-container" id="sliderContainer">
-      <div class="service-track" id="serviceTrack">
-        <div class="service-card"><img src="asset/eco1.png" alt="ETP Installation"><h3>ETP Plant Installation</h3><p>Designing and installing Effluent Treatment Plants tailored to industrial needs.</p></div>
-        <div class="service-card"><img src="asset/ser1 (4).png" alt="Waste Recycling"><h3>Industrial RO Filter</h3><p>Eco-friendly waste collection and recycling ensuring zero landfill.</p></div>
-        <div class="service-card"><img src="asset/ser1 (4).png" alt="Plant Maintenance"><h3>Domestic RO Filter</h3><p>Regular maintenance and optimization for long-term sustainability.</p></div>
-        <div class="service-card"><img src="asset/bk.png" alt="Water Quality"><h3>Pressure Sand Activated Carbon Filter</h3><p>Comprehensive testing to ensure compliance with environmental standards.</p></div>
-        <div class="service-card"><img src="asset/ser1 (6).png" alt="STP"><h3>Sewage Treatment Plants</h3><p>Installation and maintenance of all kinds of sewage treatment systems.</p></div>
-        <div class="service-card"><img src="asset/indu.png" alt="RO"><h3>Industrial/Domestic RO Systems</h3><p>Reliable and efficient RO systems for pure water solutions.</p></div>
-        <div class="service-card"><img src="asset/ak.png" alt="Filters"><h3>Pressure Sand & Activated Carbon Filters</h3><p>Advanced filters for water purification and clarity.</p></div>
-        <div class="service-card"><img src="asset/ser1 (3).png" alt="Cartridge"><h3>Cartridge Filters</h3><p>Durable and effective filtration for various water systems.</p></div>
-        <div class="service-card"><img src="asset/vesel.png" alt="Vessel"><h3>Vessel Medias</h3><p>Quality filter medias for water treatment applications.</p></div>
-        <div class="service-card"><img src="asset/ser1 (2).png" alt="MBBR"><h3>MBBR Media</h3><p>Efficient biofilm carriers for wastewater treatment plants.</p></div>
-        <div class="service-card"><img src="asset/airbowl.png" alt="Blowers"><h3>Air Blowers</h3><p>Energy-efficient air blowers for aeration and mixing systems.</p></div>
-        <div class="service-card"><img src="asset/doosing pump.png" alt="Dosing"><h3>Dosing Pumps</h3><p>High-quality dosing pumps for accurate chemical dosing.</p></div>
-      </div>
-      <div class="pause-hint">Hover to pause</div>
+    <div class="services-grid">
+
+      <div class="service-card"><img src="asset/eco1.png"><h3>ETP Plant Installation</h3><p>Effluent Treatment Plant setup.</p></div>
+
+      <div class="service-card"><img src="asset/ser1 (4).png"><h3>Industrial RO Filter</h3><p>Eco-friendly filtration solutions.</p></div>
+
+      <div class="service-card"><img src="asset/ser1 (4).png"><h3>Domestic RO Filter</h3><p>Pure water for homes.</p></div>
+
+      <div class="service-card"><img src="asset/bk.png"><h3>Pressure Sand Carbon Filter</h3><p>High-quality purification.</p></div>
+
+      <div class="service-card"><img src="asset/ser1 (6).png"><h3>Sewage Treatment Plants</h3><p>Complete STP installation.</p></div>
+
+      <div class="service-card"><img src="asset/indu.png"><h3>RO Systems</h3><p>Industrial & domestic RO.</p></div>
+
+      <div class="service-card"><img src="asset/ak.png"><h3>PSF & ACF Filters</h3><p>Advanced filtration.</p></div>
+
+      <div class="service-card"><img src="asset/ser1 (3).png"><h3>Cartridge Filters</h3><p>Durable & efficient filters.</p></div>
+
+      <div class="service-card"><img src="asset/vesel.png"><h3>Vessel Medias</h3><p>High-quality media.</p></div>
+
+      <div class="service-card"><img src="asset/ser1 (2).png"><h3>MBBR Media</h3><p>Biofilm carriers.</p></div>
+
+      <div class="service-card"><img src="asset/airbowl.png"><h3>Air Blowers</h3><p>Energy-efficient blowers.</p></div>
+
+      <div class="service-card"><img src="asset/indu.png"><h3>Dosing Pumps</h3><p>Accurate chemical dosing.</p></div>
+
     </div>
   </section>
 
-  <!-- ---------- Footer ---------- -->
+  <!-- Footer -->
   <footer>
-    <img src="asset/c3.png" alt="Company Logo">
+    <img src="asset/c3.png">
     <h3>BlueDiamond Water Solutions</h3>
-    <p><a href="https://maps.google.com/?q=BlueDiamond+ETP+Solutions" target="_blank">📍 Main Road, Puthan Theru, Malappuram</a></p>
-    <p style="margin-top:10px; font-size:13px;">
-      <a href="https://www.navigatorassist.in/">© navigatorassist All rights reserved.</a>
-    </p>
+    <p>📍 Main Road, Puthan Theru, Malappuram</p>
+    <p style="margin-top:10px; font-size:13px;">© navigatorassist All rights reserved.</p>
   </footer>
 
   <script>
-    // --- Menu Toggle ---
     const toggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -368,57 +323,7 @@
       navLinks.classList.toggle('mobile-visible');
       navLinks.classList.toggle('mobile-hidden');
     });
-
-    // --- Slider Animation ---
-    (function() {
-      const track = document.getElementById('serviceTrack');
-      const container = document.getElementById('sliderContainer');
-      let speed = 0.6;
-      let pos = 0;
-      let trackWidth;
-      let isPaused = false;
-
-      function duplicateContent() {
-        const children = Array.from(track.children);
-        children.forEach(node => {
-          const clone = node.cloneNode(true);
-          track.appendChild(clone);
-        });
-      }
-
-      function calculateWidths() {
-        trackWidth = track.scrollWidth / 2;
-      }
-
-      function frame() {
-        if (!isPaused) {
-          pos += speed;
-          if (pos >= trackWidth) pos = 0;
-          track.style.transform = `translateX(${-pos}px)`;
-        }
-        requestAnimationFrame(frame);
-      }
-
-      container.addEventListener('mouseenter', () => isPaused = true);
-      container.addEventListener('mouseleave', () => isPaused = false);
-
-      duplicateContent();
-
-      const images = track.querySelectorAll('img');
-      let imagesToLoad = images.length;
-      const done = () => {
-        imagesToLoad--;
-        if (imagesToLoad === 0) {
-          calculateWidths();
-          requestAnimationFrame(frame);
-        }
-      };
-
-      if (imagesToLoad === 0) done();
-      else images.forEach(img => img.complete ? done() : img.addEventListener('load', done));
-
-      window.addEventListener('resize', calculateWidths);
-    })();
   </script>
+
 </body>
 </html>

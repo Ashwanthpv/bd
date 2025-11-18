@@ -7,22 +7,40 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-  color: white;
-  min-height: 100vh;
-}
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
 
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header Section */
     header {
       background: #0077b6;
-      padding: 10px 0;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1px;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
       gap: 25px;
       margin: 0;
       padding: 0;
@@ -38,6 +56,7 @@
       text-decoration: underline;
     }
 
+    /* Page Content */
     .content {
       text-align: center;
       padding: 40px 20px;
@@ -50,6 +69,7 @@
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      color: black;
     }
 
     label {
@@ -94,7 +114,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Header with Logo -->
   <header>
+    <div class="logo">BlueDiamond Water Solution</div>
     <nav>
       <ul>
         <li><a href="home.html">Home</a></li>
@@ -105,10 +128,11 @@
     </nav>
   </header>
 
+  <!-- Main Content -->
   <section class="content">
     <h1>Contact Us</h1>
     <p>Email: bluediamondbuisness@gmial.com</p>
-    <p>Phone: +91  9048015678</p>
+    <p>Phone: +91 9048015678</p>
 
     <!-- Contact Form -->
     <form id="contactForm">
@@ -125,10 +149,14 @@
     </form>
   </section>
 
+  <!-- Footer -->
   <footer>
-   <a href="https://www.navigatorassist.in/"> &copy; 2025 navigatorassist. All Rights Reserved.</a>
+    <a href="https://www.navigatorassist.in/" style="color: white; text-decoration: none;">
+      &copy; 2025 NavigatorAssist. All Rights Reserved.
+    </a>
   </footer>
 
+  <!-- Email Script -->
   <script>
     document.getElementById("contactForm").addEventListener("submit", function(e){
       e.preventDefault();
@@ -143,5 +171,6 @@
       window.location.href = `mailto:brookstonegift@gmial.com?subject=${subject}&body=${body}`;
     });
   </script>
+
 </body>
 </html>

@@ -4,23 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - BlueDiamond</title>
+
   <style>
-    /* Animated background */
+    /* White Background */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, white, #e9ebeb, red);
-      background-size: 400% 400%;
-      animation: gradient 12s ease infinite;
-      color: white;
+      background: white;
+      color: black;
       overflow-x: hidden;
       position: relative;
-    }
-
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     /* Navigation Bar */
@@ -38,6 +31,7 @@
       box-sizing: border-box;
       z-index: 1000;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      color: white;
     }
 
     header nav a {
@@ -52,14 +46,12 @@
       color: #23d5ab;
     }
 
-    /* Logo Section */
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    /* Rectangle logo only visible on laptops/desktops */
     .logo img.desktop-logo {
       display: block;
       width: 360px;
@@ -68,13 +60,13 @@
       border-radius: 8px;
     }
 
-    /* Hide logo on smaller screens */
     @media (max-width: 768px) {
       .logo img.desktop-logo {
         display: none;
       }
     }
 
+    /* Slider */
     .slider {
       position: relative;
       width: 100%;
@@ -116,38 +108,39 @@
     .text h1 {
       font-size: 2.5rem;
       margin-bottom: 15px;
+      color: #000;
     }
 
     .text p {
-      color: #2c2929;
+      color: #333;
       font-size: 1.1rem;
       line-height: 1.6;
     }
 
+    /* Vision & Mission Section */
     .bottom-section {
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.05);
       padding: 60px 20px;
       text-align: center;
-      backdrop-filter: blur(5px);
     }
 
     .card {
       width: 45%;
       margin: 20px;
-      background: rgba(0, 0, 0, 0.3);
+      background: #ffffff;
       border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
     }
 
     .card img {
@@ -161,17 +154,18 @@
     .card h2 {
       font-size: 1.8rem;
       margin-bottom: 10px;
-      color: #fff;
+      color: #000;
     }
 
     .card p {
       font-size: 1rem;
       line-height: 1.6;
-      color: #f0f0f0;
+      color: #444;
     }
 
+    /* Footer */
     footer {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       padding: 20px 0;
       color: #fff;
     }
@@ -200,15 +194,6 @@
       align-items: flex-end;
     }
 
-    .social-icons {
-      margin-bottom: 10px;
-    }
-
-    .social-icons a {
-      margin-left: 10px;
-      display: inline-block;
-    }
-
     .social-icons img {
       width: 35px;
       height: 35px;
@@ -222,18 +207,15 @@
 
     .contact-info {
       text-align: right;
-      line-height: 1.5;
+      color: white;
     }
 
+    /* Mobile Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         text-align: center;
         padding: 10px 15px;
-      }
-
-      .logo {
-        flex-direction: column;
       }
 
       .slide {
@@ -257,7 +239,6 @@
 
       .footer-container {
         flex-direction: column;
-        align-items: center;
         text-align: center;
       }
 
@@ -277,16 +258,15 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Header Navigation -->
   <header>
     <div class="logo">
       <img src="asset/21.jpg" alt="BlueDiamond Logo" class="desktop-logo" />
-      
     </div>
     <nav>
-      <!-- <a href="#">Home</a> -->
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
@@ -299,10 +279,7 @@
       <img src="asset/water.png.png" alt="Eco Plant" />
       <div class="text">
         <h1>WELCOME TO BlueDiamond Water Solutions</h1>
-        <p>Blue Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
-</p>
-        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
-        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment, installation of the water treatment plants and drinking water projects...</p> -->
+        <p>Blue Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions.</p>
       </div>
     </div>
 
@@ -310,10 +287,7 @@
       <img src="asset/IMG_6715.PNG" alt="Water Treatment" />
       <div class="text">
         <h1>WELCOME TO BlueDiamond Water Solutions</h1>
-        <p>Blue Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
-</p>
-        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
-        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment...</p> -->
+        <p>Blue Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation with advanced technology and expert professionals.</p>
       </div>
     </div>
 
@@ -321,10 +295,7 @@
       <img src="asset/ChatGPT Image Nov 17, 2025, 10_18_05 AM.png" alt="Recycling" />
       <div class="text">
         <h1>WELCOME TO BlueDiamond Water Solutions</h1>
-        <p> Diamond Water Solutions founded in 2009, specializes in water treatment and plant installation. With advanced technology, expert professionals, and a passion for quality, we deliver reliable, innovative, and cost-effective solutions — continuously expanding to meet our customers’ needs.
-</p>
-        <!-- <p>Blue Diamond Water Solutions, founded in 2009, is a trusted name in water treatment and plant installation. We specialize in drinking water projects, offering quality solutions with modern design, innovation, and competitive pricing. Driven by our “passion to excel,” we deliver fast, reliable results using advanced technology and expert professionals. Building on our success and customer trust, we continue to expand our services and product range.</p> -->
-        <!-- <p>Blue Diamond Water Solutions is a reputed service provider offering water treatment...</p> -->
+        <p>Blue Diamond Water Solutions delivers reliable, innovative, and cost-effective solutions with continuous expansion to meet customer needs.</p>
       </div>
     </div>
   </div>
@@ -334,13 +305,13 @@
     <div class="card">
       <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Vision" />
       <h2>Our Vision</h2>
-      <p>To provide world class solutions for safe, clean and hygienic drinking water to society...</p>
+      <p>To provide world class solutions for safe, clean and hygienic drinking water to society.</p>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Mission" />
       <h2>Our Mission</h2>
-      <p>To harness our expertise and provide world-class solutions in our quest to deliver safe drinking water...</p>
+      <p>To harness our expertise and provide world-class solutions in our quest to deliver safe drinking water.</p>
     </div>
   </div>
 
@@ -352,19 +323,23 @@
           <img src="asset/footer.png" alt="BlueDiamond Logo">
         </a>
       </div>
+
       <div class="footer-info">
         <div class="social-icons">
-          <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram"></a>
-          <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384007.png" alt="WhatsApp"></a>
-          <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Facebook"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png"></a>
+          <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384007.png"></a>
+          <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png"></a>
         </div>
+
         <div class="contact-info">
-          <strong>BlueDiamond Water Solutions </strong><br>
+          <strong>BlueDiamond Water Solutions</strong><br>
           Main Road, Puthan Theru, Malappuram<br>
-          Phone: +91 904801578 | Email: info@bluediamond.com
+          Phone: +91 904801578<br>
+          Email: info@bluediamond.com
         </div>
       </div>
     </div>
+
     <p style="text-align: center; margin-top: 20px; color: #fff; font-size: 0.9rem;">
       © <a href="https://www.navigatorassist.in/" style="color:#23d5ab;">navigatorassist All rights reserved.</a>
     </p>
@@ -373,11 +348,13 @@
   <script>
     let slides = document.querySelectorAll(".slide");
     let index = 0;
+
     function showNextSlide() {
       slides[index].classList.remove("active");
       index = (index + 1) % slides.length;
       slides[index].classList.add("active");
     }
+
     setInterval(showNextSlide, 4000);
   </script>
 
